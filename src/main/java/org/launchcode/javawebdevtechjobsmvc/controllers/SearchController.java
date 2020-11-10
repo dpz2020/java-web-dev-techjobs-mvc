@@ -28,7 +28,7 @@ public class SearchController {
     @RequestMapping(value = "results")
     public String displaySearchResults(Model model, @RequestParam String searchType, @RequestParam String searchTerm) {
         if (searchType.equals("all")) {
-            ArrayList<Job> results = JobData.findAll();
+            ArrayList<Job> results = JobData.findByColumnAndValue(searchType, searchTerm);
             model.addAttribute("jobs", results);
 
         } else {
